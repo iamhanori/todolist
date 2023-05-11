@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> 간단한 ToDo 리스트</h1>
+    <a href="/insert">
+        <button type="button"> 추가 </button>
+    </a>
+
+    <table width="90%" border="1">
+        <tr>
+            <td>ID</td>
+            <td>내용 할일</td>
+            <td>완료 여부</td>
+            <td>완료 처리</td>
+            <td>삭제</td>
+        </tr>
+
+        <% datalist.forEach(function (item, index) { %>
+            <tr>
+                <td> <%= item.id %> </td>
+                <td> <%= item.contents %> </td>
+                <td> <%= item.yesno %> </td>
+                <td>
+                    <% if(item.yesno == 'yes') { %>
+                        <button type="button" > 변경 </button>
+                    <% } else { %>
+                        <a href="/edit/<%= item.id %>">
+                        <button type="button"> 완료 </button>
+                        </a>
+                    <% } %>
+                    <td>
+                        <a href="/delete/<%= item.id %>">
+                            <button type="button"> 삭제 </button>
+                            </a>
+                    </td>
+            </tr>    
+        <%})%>
+    </table>
+</body>
+</html>
